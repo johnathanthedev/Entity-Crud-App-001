@@ -34,7 +34,6 @@ namespace EntityCrudApp001
 
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
-            services.AddTransient<BooksService>();
             services.AddTransient<TodosService>();
             services.AddSwaggerGen(c =>
             {
