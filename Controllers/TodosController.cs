@@ -19,10 +19,38 @@ namespace EntityCrudApp001.Controllers
             _todosService = todosService;
         }
 
+        [HttpGet]
+        public IActionResult GetTodos()
+        {
+            var allTodos = _todosService.GetTodos();
+            return Ok(allTodos);
+        }
+
+        [HttpGet("/{id}")]
+        public IActionResult GetTodo(int id)
+        {
+            var todo = _todosService.GetTodoById(id);
+            return Ok(todo);
+        }
+
         [HttpPost]
         public IActionResult CreateTodo([FromBody] Todo todo)
         {
             _todosService.CreateTodo(todo);
+            return Ok();
+        }
+    
+        [HttpPut("/{id}")]
+        public IActionResult UpdateTodo(int id, [FromBody] Todo todo)
+        {
+            var updatedTodo = _todosService.UpdateTodo(id, todo);
+            return Ok(updatedTodo);
+        }
+    
+        [HttpDelete("/{id}")]
+        public IActionResult DeleteTodo(int id)
+        {
+            _todosService.DeleteTodo(id);
             return Ok();
         }
     }
