@@ -11,18 +11,18 @@ namespace EntityCrudApp001.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BooksController : ControllerBase
+    public class TodosController : ControllerBase
     {
-        public BooksService _bookService;
-        public BooksController(BooksService booksService)
+        public TodosService _todosService;
+        public TodosController(TodosService todosService)
         {
-            _bookService = booksService;
+            _todosService = todosService;
         }
 
         [HttpPost]
-        public IActionResult CreateBook([FromBody]Book book)
+        public IActionResult CreateTodo([FromBody] Todo todo)
         {
-            _bookService.CreateBook(book);
+            _todosService.CreateTodo(todo);
             return Ok();
         }
     }

@@ -1,4 +1,5 @@
 using EntityCrudApp001.DB;
+using EntityCrudApp001.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,8 @@ namespace EntityCrudApp001
 
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+            services.AddTransient<BooksService>();
+            services.AddTransient<TodosService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EntityCrudApp001", Version = "v1" });
